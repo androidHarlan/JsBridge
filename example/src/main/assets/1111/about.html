@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>关于我们</title>
+		<meta name="viewport" content="width=640, user-scalable=no">
+		<style>
+			div{
+				font-size:36px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="fullT_wrap">
+
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    	<script type="text/javascript" src="js/javaScriptSdk.js"></script>
+		<script>
+            jsTransactionManagers.requestInitialData(function(initialDataFromNative){
+                 var jsonObject = eval("("+initialDataFromNative+")");
+                 $(".fullT_wrap").html(jsonObject.content);
+            });
+		</script>
+	</body>
+</html>

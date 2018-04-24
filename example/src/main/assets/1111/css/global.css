@@ -1,0 +1,60 @@
+*{-webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent;}
+
+html,body{width: 640px;height: 100%; font-family: "Microsoft YaHei", Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC",sans-self;margin: 0; padding: 0;background-color: #fff;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;}
+/*
+***********************************************************************************
+* 页面样式，开始！
+*/
+/*展会详情页面*/
+.page{width: 640px;height: 100%;position: absolute;top:0;left: 0;background-color: rgba(246,246,246,1.0);}
+.top_bg{background-image: url(../images/img_showdetail_bg.png);width: 640px;height: 450px;background-repeat: no-repeat;}
+.top_banner{width: 588px;height: 346px;padding-top: 15px;padding-left: 25px;position: absolute;}
+/*.top_banner_img{position: absolute;}*/
+/*.top_banner_img img{width:100%;height: 100%;}*/
+/*.top_banner_img{position: relative;width: 588px;height: 346px;padding-top: 15px;padding-left: 25px;}*/
+/*.top_banner_img img{width:100%;height: 100%;}*/
+.banner_white{width:588px;height: 50px;background-color: rgba(254,254,254,0.8);position: absolute;bottom: 0;left: 25px;}
+.banner_name{font-size: 27px;color: #3b424a;float: left;padding-top: 5px;padding-left: 20px;width: 500px;overflow: hidden;height: 42px;}
+.banner_heart{background-image: url(../images/banner-heart.png);width: 36px;height: 34px;background-repeat: no-repeat;float: right;padding-right: 40px;margin-top: 8px;}
+.b_time_icon{background-image: url(../images/banner-time-icon.png);width: 18px;height: 18px;background-repeat: no-repeat;float: left;margin-top: 4px;margin-right: 5px;}
+.b_money_icon{background-image: url(../images/banner-prize-icon.png);width: 15px;height: 18px;background-repeat: no-repeat;float: left;margin-top: 4px;margin-right: 5px}
+.b_position_icon{background-image: url(../images/banner-position-icon.png);width: 13px;height: 18px;background-repeat: no-repeat;float: left;margin-top: 4px;margin-right: 5px}
+.b_dq_icon{background-image: url(../images/banner-dq-icon.png);width: 19px;height: 19px;background-repeat: no-repeat;float: left;margin-top: 4px;margin-right: 5px}
+.b_words{font-size: 20px;color: #deedf8;width: 400px;height: 26px;}
+.top_information{float: left;width: 260px;overflow: hidden;}
+.top_information_box{position: absolute;top:375px;left: 30px;}
+.bottom{margin-bottom: 5px;}
+
+.menu_box{height: 344px;margin-top: 20px;margin-left: 30px;margin-right: 30px;}
+.menu_box li{position:relative;width: 20%;height: 123px;float: left;list-style-type: none;margin-bottom: 45px;text-align:center;}
+.logoCSS {display:inline-block;width: 100px;height: 100px;background-repeat: no-repeat;margin-top: 15px;background-size:cover;}
+
+/*.menu_box li:nth-child(5){margin-right: 0px;}*/
+.menu_logo_a{background-image: url(../images/ico_01.png);}
+.menu_logo_b{background-image: url(../images/ico_02.png);}
+.menu_logo_c{background-image: url(../images/ico_03.png);}
+.menu_logo_d{background-image: url(../images/ico_04.png);}
+.menu_logo_e{background-image: url(../images/ico_05.png);}
+.menu_logo_f{background-image: url(../images/ico_06.png);}
+.menu_logo_g{background-image: url(../images/ico_07.png);}
+.menu_logo_h{background-image: url(../images/ico_08.png);}
+.menu_logo_i{background-image: url(../images/ico_09.png);}
+.menu_logo_j{background-image: url(../images/ico_10.png);}
+.menu_words{font-size: 23px;color: #505d66;text-align:center;position: absolute;bottom:-30px;width: 100%;}
+
+.text_box{width: 590px;height: auto;padding-left: 25px;padding-right: 25px;font-size: 25px;color: #3b424a;margin-top: 25px;line-height: 40px;margin-bottom: 50px;}
+.text_box img{width: 100%;height: 100%;margin-top: 25px;margin-bottom: 25px;}
+/*资讯详情*/
+.detail_page{width:640px;height: 100%;background-color: #fff;position: absolute;top:0px;left: 0px;}
+.detail_title{font-size: 39px;color: #000;font-weight: 700;}
+.detail_box{width: 590px;height: auto;padding-top: 35px;padding-left: 25px;padding-right: 25px;margin-bottom: 50px;}
+.detail_top{width: 100%;height: 35px;padding-top: 25px;}
+.detail_time{font-size: 26px;color: #91969a;float: left;}
+.detail_btn_box{float: right;}
+.detail_btn_box .heart_btn{background-image: url(../images/details/icon-heart.png);width: 32px;height: 30px;background-repeat: no-repeat;float: left;}
+.detail_btn_box .forward_btn{background-image: url(../images/details/forward-icon.png);width: 39px;height: 30px;background-repeat: no-repeat;float: left;margin-left: 60px;}
+.detail_text_box{margin-top: 20px;font-size: 28px;color: #3b424a;line-height: 45px;}
+.detail_text_box img{width: 100%;height: 100%;padding-bottom: 20px;padding-top: 20px;}
+
+
+

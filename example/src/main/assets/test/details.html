@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资讯详情</title>
+    <script src="js/my-viewport.js"></script>
+	<link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    <div class="detail_page">
+       <div class="detail_box">
+           <div class="detail_title">国内大型高尔夫主题品牌折扣会即将于12月登陆上海</div>
+           <div class="detail_top">
+               <div class="detail_time">2016-08-13</div>
+               <div class="detail_btn_box">
+                   <div class="heart_btn" data-flag="0"></div>
+                   <div class="forward_btn"></div>
+               </div>
+           </div>
+           <div class="detail_text_box">
+               <img src="images/img1.jpg">
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由高尔夫行业领先的中国国际高尔夫球博览会主办方“励展光合展览公司”所主办的大型高尔夫主题品牌折扣会将于12月10日于上海展览中心盛大举办。届时，3000+平米的展厅内，将汇聚超过100家的高尔夫行业知名品牌，预计能吸引超过万名高球爱好者莅临采购高尔夫相关商品，将成为2016年末在华东地区大型的高尔夫盛会，点燃高尔夫相关商品的消费热情。
+               <img src="images/img2.jpg">
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主办方表示：为了办好这个国内首次以高尔夫为主题的品牌折扣会，主办方从选址到时间都做了精心的安排和部署，举办地上海展览中心位于上海核心市区，四周商圈发达、交通方便，展览中心周围也是高净值人群及大量的日、韩藉人士的居住地，从地理位置上极大的便利了高球爱好者前来选购高尔夫相关商品，而年终也正是爱好者汰旧换新的好时机，品牌折扣会刚好可以提供高球爱好者一次比较各大品牌，购买超值高尔夫相关商品的最佳机会。
+           </div>
+       </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/javaScriptSdk.js"></script>
+    <script>
+        $(document).ready(function(){
+            jsTransactionManagers.call("service://ExhibitionDetail/isCollected","",function(data){
+                if(data==0){
+                   $(".heart_btn").attr("data-flag","0");
+                   $(".heart_btn").css("background-image","url(images/details/icon-heart.png)");
+                }else if(data==1){
+                   $(".heart_btn").attr("data-flag","1");
+                   $(".heart_btn").css("background-image","url(images/details/icon-red-heart.png)");
+                }
+            });
+            $(".heart_btn").on("click",function(){
+               var a = $(".heart_btn").attr("data-flag");
+               if(a==0){
+                   $(".heart_btn").attr("data-flag","1");
+                   $(".heart_btn").css("background-image","url(images/details/icon-red-heart.png)");
+                   jsTransactionManagers.call("service://ExhibitionDetail/collectClick","",function(data){});
+               }else if(a==1){
+                   $(".heart_btn").attr("data-flag","0");
+                   $(".heart_btn").css("background-image","url(images/details/icon-heart.png)");
+                   jsTransactionManagers.call("service://ExhibitionDetail/disCollectClick","",function(data){});
+                   
+               }
+            });
+        });
+    </script>
+</body>
+</html>

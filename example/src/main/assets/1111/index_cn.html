@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>展会详情</title>
+            <script src="js/my-viewport.js" ></script>
+            <link rel="stylesheet" href="css/global.css">
+                <style>
+                    *{ margin: 0;padding: 0;}
+                    #slideBox{ height: 100%;width: 100%;overflow: hidden;position: relative;}
+                    #slideBox .slideBd{ position:relative;z-index:0;}
+                    #slideBox .slideBd img{ display: block;}
+                    #slideBox .slideBd li{ list-style-type: none;height: auto;position: relative;}
+                    #slideBox .slideHd{ opacity: 0;bottom: 13px;height: 32px;line-height: 32px;position: absolute;left: 42%;}
+                    #slideBox .slideHd li{ display:inline-block;width:20px;height:20px;-webkit-border-radius:12px;border:1px solid #fff;text-indent:-9999px;overflow:hidden;margin:0 6px;}
+                    #slideBox .slideHd li.on{ background-color:#fff;}
+                    </style>
+    </head>
+    <body>
+        <div class="page">
+            <div class="top_bg" style="height:500px;">
+                <div class="top_banner" style="overflow: hidden;width:588px;">
+                    <div id="slideBox">
+                        <div class="slideBd">
+                            <ul id="bannerList">
+                                <!--                        <li><img src="images/img1.jpg" width="100%"></li>
+                                 <li><img src="images/img1.jpg" width="100%"></li>
+                                 <li><img src="images/img1.jpg" width="100%"></li>
+                                 <li><img src="images/img1.jpg" width="100%"></li> -->
+                            </ul>
+                        </div>
+                        <div class="slideHd"><ul></ul></div>
+                    </div>
+                    <!--<div class="top_banner_img banner" style="float:left;position:absolute;overflow: hidden;height:450px;width:588px;">
+                     <ul class="banner_ul" style="position: relative;overflow: hidden;padding:0px;">
+                     </ul>
+                     </div>-->
+                    <div class="banner_white">
+                        <div class="banner_name" style="width:70%;overflow:hidden;text-overflow:ellipsis; -o-text-overflow:ellipsis;white-space:nowrap;float:left;"></div>
+                        <div class="banner_heart" style="">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="top_information_box">
+                    <div class="top_information bottom" style="float:none;display:inline-block;width:100%;margin-top:8px;"><div class="b_time_icon"></div><div class="b_words time"></div></div>
+                    <div class="top_information" style="float:none;display:inline-block;width:100%;margin-top:8px;"><div class="b_position_icon"></div><div class="b_words address" style = "width:500px;height:30px;white-space:nowrap;overflow:hidden;text-overflow: ellipsis;"></div></div>
+                    <div class="top_information bottom" style="display:inline-block;width:50%;margin-top:8px;"><div class="b_money_icon"></div><div class="b_words ticket"></div></div>
+                    <div class="top_information" style="display:inline-block;width:50%;margin-top:8px;"><div class="b_dq_icon"></div><div class="b_words" onclick="urlClick()">点击进入官网</div></div>
+                </div>
+            </div>
+            <div class="menu_box">
+                <li onclick="exhibitorClick()"><div class="menu_logo_a logoCSS"></div><div class="menu_words">展商名录</div></li>
+                <li onclick="productClick()"><div class="menu_logo_b logoCSS"></div><div class="menu_words">展商产品</div></li>
+                <li onclick="standpicClick()"><div class="menu_logo_c logoCSS"></div><div class="menu_words" >展位图</div></li>
+                <li onclick="visitClick()"><div class="menu_logo_d logoCSS"></div><div class="menu_words">参观登记</div></li>
+                <li onclick="bookingClick()"><div class="menu_logo_e logoCSS"></div><div class="menu_words">展会预订</div></li>
+                <li onclick="matchingClick()"><div class="menu_logo_f logoCSS"></div><div class="menu_words">展会资讯</div></li>
+                <li onclick="recommendClick()"><div class="menu_logo_g logoCSS"></div><div class="menu_words">热门推荐</div></li>
+                <li onclick="meetingActivityClick()"><div class="menu_logo_h logoCSS"></div><div class="menu_words">会议活动</div></li>
+                <li onclick="guideClick()"><div class="menu_logo_i logoCSS"></div><div class="menu_words">展会指南</div></li>
+                <li onclick="aboutUsClick()"><div class="menu_logo_j logoCSS"></div><div class="menu_words">关于我们</div></li>
+            </div>
+            <div class="text_box">
+            </div>
+        </div>
+        <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+        <script src="js/TouchSlide.1.0.js" ></script>
+        <script type="text/javascript" src="js/javaScriptSdk.js"></script>
+        <script>
+            var lengths = 0;
+            jsTransactionManagers.requestInitialData(function(initialDataFromNative){
+                 var data = initialDataFromNative;
+                 var jsonObject = eval("("+data+")");
+                 $(".banner_name").html(jsonObject.name);
+                 $(".time").html(jsonObject.time); $(".address").html(jsonObject.address);
+                 $(".ticket").html(jsonObject.ticket);
+                 $(".url").html(jsonObject.url);
+                 $(".text_box").html(jsonObject.descDetail);
+                 var pictureUrls = jsonObject.bannerList
+                 $.each(pictureUrls,function(key,img){
+                        $("#bannerList").append("<li><div onclick = letAppGo('"+img.url+"')><img src="+img.pictureUrl+" style='width:588px;'></div></li>");
+                        })
+                 var length = pictureUrls.length;
+                 var lengths = length
+                 var widthLength = length*588;
+                 TouchSlide({
+                            slideCell: '#slideBox',
+                            titCell: '#slideBox .slideHd ul',
+                            mainCell: '#slideBox .slideBd ul',
+                            effect: 'leftLoop',
+                            autoPage: true,
+                            autoPlay: true
+                            });
+                 //handle heart
+                 
+                 if(jsonObject.isCollect==0){
+                 $(".banner_heart").attr("data-flag","0");
+                 $(".banner_heart").css("background-image","url(images/banner-heart.png)");
+                 }else if(jsonObject.isCollect==1){
+                 $(".banner_heart").attr("data-flag","1");
+                 $(".banner_heart").css("background-image","url(images/banner-red-heart.png)");
+                 }
+             });
+                              
+                   $(document).ready(function(){
+                                     $(".banner_heart").on("click",function(){
+                                                           var a = $(".banner_heart").attr("data-flag");
+                                                           if(a==0){
+                                                           $(".banner_heart").attr("data-flag","1");
+                                                           $(".banner_heart").css("background-image","url(images/banner-red-heart.png)");
+                                                           jsTransactionManagers.call("service://ExhibitionDetail/collect","[]",function(data){});
+                                                           }else if(a==1){
+                                                           $(".banner_heart").attr("data-flag","0");
+                                                           $(".banner_heart").css("background-image","url(images/banner-heart.png)");
+                                                           jsTransactionManagers.call("service://ExhibitionDetail/disCollect","[]",function(data){});
+                                                           }
+                                                           });
+                                     });
+                                     function letAppGo(url){
+                                         jsTransactionManagers.call("service://ExhibitionDetail/newWeb","[\""+url+"\"]"),function(data){
+                                             
+                                         }
+                                     }
+        function exhibitorClick(){
+            //alert(sdk.init())
+            jsTransactionManagers.call("service://ExhibitionDetail/exhibitor","[]",function(data){});
+        }
+        function productClick(){
+            //alert(sdk.init())
+            jsTransactionManagers.call("service://ExhibitionDetail/product","[]",function(data){});
+        }
+        function standpicClick(){
+            jsTransactionManagers.call("service://ExhibitionDetail/standpic","[]",function(data){});
+        }
+        function aboutUsClick(){
+            //alert(sdk.init())
+            jsTransactionManagers.call("service://ExhibitionDetail/about","[]",function(data){});
+        }
+        function visitClick(){
+            //alert(sdk.init())
+            jsTransactionManagers.call("service://ExhibitionDetail/visit","[]",function(data){});
+        }
+        function bookingClick(){
+            //alert(sdk.init())
+            jsTransactionManagers.call("service://ExhibitionDetail/booking","[]",function(data){});
+        }
+        function matchingClick(){
+            //alert(sdk.init())
+            jsTransactionManagers.call("service://ExhibitionDetail/matching","[]",function(data){});
+        }
+        //世翰看这里
+        function meetingActivityClick(){
+            jsTransactionManagers.call("service://ExhibitionDetail/meeting","[]",function(data){});
+        }
+        
+        function recommendClick(){
+            jsTransactionManagers.call("service://ExhibitionDetail/recommend","[]",function(data){});
+        }
+        function guideClick(){
+            jsTransactionManagers.call("service://ExhibitionDetail/guide","[]",function(data){});
+        }
+        function urlClick(){
+            jsTransactionManagers.call("service://ExhibitionDetail/urlClick","[]",function(data){});
+        }
+            </script>
+    </body>
+</html>
